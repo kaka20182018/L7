@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+
+		<style type="text/css">
+			.out {
+				width: 300px;
+				height: 300px;
+				margin: 100px auto 30px;
+				border: solid 2px red;
+				/*
+				 *  景深/透视距离
+				 * 
+				 * */
+				-webkit-perspective: 800px;
+			}
+			
+			.inner {
+				width: inherit;
+				height: inherit;
+				background-color: green;
+				-webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="out">
+			<div class="inner"></div>
+		</div>
+
+		<div id="rotatex">rotateX(<span>0</span>deg)<input type="range" min="0" max="360" value="0" /> </div>
+		<div id="rotatey">rotateY(<span>0</span>deg)<input type="range" min="0" max="360" value="0" /> </div>
+		<div id="rotatez">rotateZ(<span>0</span>deg)<input type="range" min="0" max="360" value="0" /> </div>
+		<script type="text/javascript" src="js/jquery-2.1.0.js"></script>
+
+		<script type="text/javascript">
+			$("input").on('input', function() {
+				var x = $("#rotatex input").val();
+				var y = $("#rotatey input").val();
+				var z = $("#rotatez input").val();
+
+				$("#rotatex span").text(x);
+				$("#rotatey span").text(y);
+				$("#rotatez span").text(z);
+
+				$(".inner").css("-webkit-transform", "rotateX(" + x + "deg) rotateY(" + y + "deg) rotateZ(" + z + "deg)");
+			});
+		</script>
+
+	</body>
+
+</html>
